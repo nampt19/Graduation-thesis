@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipeRevealLayoutComment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    app:dragEdge="right"
+    app:mode="same_level">
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_dark"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progress_bar_delete_comment"
+            android:layout_width="wrap_content"
+            android:padding="16dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:theme="@style/progressBarWhite"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/img_delete_comment"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:background="@android:color/holo_red_dark"
+            android:padding="16dp"
+            android:src="@drawable/ic_baseline_delete_bin_24"
+            app:tint="@android:color/white" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/url_img_username_comment"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/unnamed"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_username_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phạm THành Nam"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_content_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:text="Hay quá :v"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/txt_time_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23:56 13/8/2020"
+                android:textColor="@color/colorGreyNormal"
+                android:textSize="12dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorGreyThinSuper" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

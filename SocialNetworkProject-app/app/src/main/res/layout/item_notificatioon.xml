@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_reveal_layout_item_notify"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:dragEdge="right"
+    app:mode="same_level">
+
+    <RelativeLayout
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_dark"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progress_bar_delete_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="16dp"
+            android:theme="@style/progressBarWhite"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/img_delete_notify"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:background="@android:color/holo_red_dark"
+            android:padding="16dp"
+            android:src="@drawable/ic_baseline_delete_bin_24"
+            app:tint="@android:color/white" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_item_notify"
+        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:id="@+id/container_img_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_user_notify"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/unnamed"
+                app:civ_border_color="@android:color/black"
+                app:civ_border_width="1dp" />
+
+            <ImageView
+                android:id="@+id/img_icon_type_notify"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignEnd="@+id/img_user_notify"
+                android:layout_alignBottom="@id/img_user_notify"
+                android:background="@drawable/green_circle_bk"
+                android:padding="4dp"
+                android:src="@drawable/ic_post_add_24" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_content_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="8dp"
+                android:text="Ngọc Phạm đã đăng bài viết mới"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txt_time_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_default"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".view.more.InforPersonActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_info_person_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/img_banner_info_person_activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/null_bk" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_avatar_info_person_activity"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            app:civ_border_color="@android:color/white"
+            app:civ_border_width="2dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/unnamed" />
+
+        <TextView
+
+            android:id="@+id/txt_name_user_title_info_person_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="32dp"
+            android:layout_toEndOf="@id/img_avatar_info_person_activity"
+            android:text="@string/name_user_default"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:paddingHorizontal="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tên"
+                android:textColor="@android:color/black" />
+            <TextView
+                android:id="@+id/txt_name_user_body_info_person_activity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginLeft="24dp"
+                android:text="@string/name_user_default" />
+
+            <EditText
+                android:visibility="gone"
+                android:id="@+id/edt_name_user_body_info_person_activity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:layout_weight="3"
+                android:layout_marginLeft="24dp"
+                android:textSize="14sp"
+                android:text="@string/name_user_default" />
+
+            <ImageView
+                android:id="@+id/btn_edit_name_info_person_activity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_effect_click_view"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:tint="@color/colorGrey" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingHorizontal="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Điện thoại"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/txt_phone_body_info_person_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                android:text="@string/number_default" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

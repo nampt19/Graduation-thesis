@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh_layout_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyThinSuper"
+    android:orientation="vertical"
+    tools:context=".view.home.HomeFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whiteCardColor">
+
+                <LinearLayout
+                    android:id="@+id/container_think"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_user_avatar_post"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginVertical="8dp"
+                        android:background="@color/whiteCardColor"
+                        android:src="@drawable/unnamed"
+                        app:civ_border_color="@color/colorBlueThin"
+                        app:civ_border_width="1dp" />
+
+                    <TextView
+                        android:id="@+id/txt_post"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingVertical="13dp"
+                        android:paddingStart="8dp"
+                        android:text="Bạn đang nghĩ gì ?"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider_below_container_think"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/container_think"
+                    android:background="@color/colorGreyThinSuper" />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/divider_below_container_think">
+
+                    <RelativeLayout
+                        android:id="@+id/container_think_image"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/ripple_effect_click_view"
+                        android:paddingVertical="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ic_baseline_image_24"
+                                app:tint="#33CC33" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginStart="8dp"
+                                android:gravity="center"
+                                android:text="Đăng ảnh"
+                                android:textColor="@android:color/black"
+                                android:textStyle="bold">
+
+                            </TextView>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorGreyThinSuper" />
+
+                    <RelativeLayout
+                        android:id="@+id/container_think_video"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/ripple_effect_click_view"
+                        android:paddingVertical="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ic_video_24" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginStart="8dp"
+                                android:gravity="center"
+                                android:text="Đăng video"
+                                android:textColor="@android:color/black"
+                                android:textStyle="bold">
+
+                            </TextView>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/layout_add_post_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/whiteCardColor"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Đang đăng bài" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:indeterminateOnly="true" />
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/layout_progress_loading_home"
+                    layout="@layout/layout_progress_loading" />
+
+                <include
+                    android:id="@+id/layout_no_data_home"
+                    layout="@layout/layout_no_data" />
+
+                <include
+                    android:id="@+id/layout_no_network_home"
+                    layout="@layout/layout_no_network" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleViewPost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

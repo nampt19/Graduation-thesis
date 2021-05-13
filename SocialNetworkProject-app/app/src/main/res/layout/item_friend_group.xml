@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginTop="12dp"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_friend_group"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/unnamed"
+        app:civ_border_color="@android:color/black"
+        app:civ_border_width="1dp" />
+
+    <TextView
+        android:id="@+id/txt_name_friend_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/img_friend_group"
+        android:paddingVertical="8dp"
+        android:text="Bích Ngọc"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:button="@drawable/custom_checkbox"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:layout_marginRight="8dp"
+        android:id="@+id/checkbox_friend_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.EditPostActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_edit_post_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/whiteCardColor"
+        android:elevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:text="Sửa bài"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btn_save_edit_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ripple_effect_click_view"
+                android:enabled="false"
+                android:padding="8dp"
+                android:text="Lưu"
+                android:textColor="@color/colorGreyThin"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_edit_post_activity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/whiteCardColor"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edt_edit_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:backgroundTint="@color/whiteCardColor"
+                    android:hint="Bạn đang nghĩ gì ?"
+                    android:paddingHorizontal="8dp" />
+
+                <LinearLayout
+                    android:id="@+id/container_media_edit_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edt_edit_post"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/img_1_edit_post"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="4dp"
+                                android:scaleType="fitXY" />
+
+                            <ImageView
+                                android:id="@+id/img_2_edit_post"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="4dp"
+                                android:scaleType="fitXY" />
+
+                            <ImageView
+                                android:id="@+id/img_3_edit_post"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="4dp"
+                                android:scaleType="fitXY" />
+
+                            <ImageView
+                                android:id="@+id/img_4_edit_post"
+                                android:layout_width="100dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="4dp"
+                                android:scaleType="fitXY" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                    <FrameLayout
+                        android:id="@+id/container_video_edit_post"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp">
+
+                        <hb.xvideoplayer.MxVideoPlayerWidget
+                            android:id="@+id/video_edit_post"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|top" />
+                    </FrameLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.HomeActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlueThin"
+        android:elevation="5dp"
+        app:titleTextColor="@color/colorGreyThin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout_search_main_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_effect_button_blue"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_search_32" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:paddingVertical="4dp"
+                    android:paddingRight="40dp"
+                    android:textSize="12sp"
+                    android:text="Tìm kiếm bạn bè, nhóm,..."
+                    android:textColor="@color/colorGreyThinSuper" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/img_scan_qr_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/layout_parent_of_img_notify"
+                android:background="@drawable/ripple_effect_button_blue"
+                android:padding="4dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_baseline_qr_code_scanner_24" />
+
+            <RelativeLayout
+                android:id="@+id/layout_parent_of_img_notify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ripple_effect_button_blue"
+                android:clickable="true">
+
+                <ImageView
+                    android:id="@+id/img_notify_main_toolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:paddingEnd="5dp"
+                    android:src="@drawable/ic_notifications_32" />
+
+                <TextView
+                    android:id="@+id/txt_total_notify"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignEnd="@id/img_notify_main_toolbar"
+                    android:background="@drawable/red_circle_bk"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/whiteTextColor"
+                    android:textSize="9dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager_controller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_below="@+id/main_toolbar" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@color/whiteCardColor"
+        app:itemIconTint="@color/custom_color_bottom_nav"
+        app:itemTextColor="@color/custom_color_bottom_nav"
+        app:menu="@menu/menu_bottom_nav" />
+</RelativeLayout>

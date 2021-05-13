@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_friend_sent"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/unnamed"
+        app:civ_border_color="@android:color/black"
+        app:civ_border_width="1dp" />
+
+    <TextView
+        android:id="@+id/txt_name_friend_sent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/img_friend_sent"
+        android:paddingVertical="8dp"
+        android:text="Bích Ngọc"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:cardCornerRadius="8dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_destroy_request"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:drawableLeft="@drawable/ic_baseline_person_add_disabled_24"
+            android:paddingLeft="8dp"
+            android:text="Hủy"
+            android:background="@drawable/ripple_effect_click_button_common"
+            android:textAllCaps="false" />
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

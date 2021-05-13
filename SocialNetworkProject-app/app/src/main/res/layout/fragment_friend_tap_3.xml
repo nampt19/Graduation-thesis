@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:background="@color/whiteCardColor"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txt_total_request_sent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="8dp"
+                        android:text="0"
+                        android:textColor="@color/colorRed"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="8dp"
+                        android:text=" lời mời đã gửi"
+                        android:textColor="@android:color/black"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <include
+                    android:id="@+id/layout_progress_loading_friend_sent"
+                    layout="@layout/layout_progress_loading" />
+
+                <include
+                    android:id="@+id/layout_no_data_friend_sent"
+                    layout="@layout/layout_no_data" />
+
+                <include
+                    android:id="@+id/layout_no_network_friend_sent"
+                    layout="@layout/layout_no_network" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_list_request_sent"
+                    android:overScrollMode="never"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

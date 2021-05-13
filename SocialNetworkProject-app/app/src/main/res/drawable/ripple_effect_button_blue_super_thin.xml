@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- An white rectangle ripple. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:color="@color/colorGreyThin"
+    tools:targetApi="lollipop">
+    <item
+        android:gravity="center">
+        <shape android:shape="rectangle">
+            <corners android:radius="8dp" />
+            <solid android:color="#E1F0F8"/>
+        </shape>
+    </item>
+</ripple>

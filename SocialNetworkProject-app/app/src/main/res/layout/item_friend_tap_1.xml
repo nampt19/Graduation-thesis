@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_friend"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/unnamed"
+        app:civ_border_color="@android:color/black"
+        app:civ_border_width="1dp" />
+
+    <TextView
+        android:id="@+id/txt_name_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/img_friend"
+        android:paddingVertical="8dp"
+        android:text="Bích Ngọc"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/ic_horizontal_item_tap_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_effect_click_view"
+            android:padding="8dp"
+            android:src="@drawable/ic_more_horiz_24" />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
