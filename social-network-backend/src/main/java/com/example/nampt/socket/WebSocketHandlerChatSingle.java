@@ -5,8 +5,10 @@ import com.example.nampt.domain.response.chat.DataSingleMessage;
 import com.example.nampt.domain.response.chat.SingleChatResponse;
 import com.example.nampt.domain.response.friend.DataSingleFriend;
 import com.example.nampt.entity.User;
+import com.example.nampt.repository.FriendRepository;
 import com.example.nampt.repository.UserRepository;
 import com.example.nampt.service.ServiceImpl.ChatService;
+import com.example.nampt.service.ServiceImpl.FriendService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.web.socket.CloseStatus;
@@ -28,9 +30,11 @@ public class WebSocketHandlerChatSingle extends AbstractWebSocketHandler {
 
     UserRepository userRepo;
 
+    FriendService friendService;
+
     List<SessionData> sessionList;
 
-    Gson  gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
 
     public WebSocketHandlerChatSingle() {
@@ -41,6 +45,8 @@ public class WebSocketHandlerChatSingle extends AbstractWebSocketHandler {
 
         userRepo = (UserRepository) SpringConfiguration.contextProvider()
                 .getApplicationContext().getBean("userRepository");
+        friendService = (FriendService) SpringConfiguration.contextProvider()
+                .getApplicationContext().getBean("friendService");
     }
 
     @Override
@@ -50,6 +56,17 @@ public class WebSocketHandlerChatSingle extends AbstractWebSocketHandler {
         User sender = userRepo.findByAccessToken(token);
 
         SingleChatRequest request = gson.fromJson(message.getPayload(), SingleChatRequest.class);
+        User partner = userRepo.findById(request.getPartnerId());
+
+        if (friendService.checkIsBlock(sender.getId(), partner.getId())) {
+            for (SessionData data : sessionList) {
+                if (data.getId() == sender.getId()) {
+                    System.out.println("user block");
+                    data.getSession().sendMessage(new TextMessage("2peopleblocked"));
+                }
+            }
+            return;
+        }
 
         SingleChatResponse response = chatService.setMessageSingle(token,
                 request.getContent(),
@@ -57,10 +74,9 @@ public class WebSocketHandlerChatSingle extends AbstractWebSocketHandler {
                 request.getCreateTime());
         switch (response.getCode()) {
             case 1000:
-                User partner = userRepo.findById(request.getPartnerId());
-                sendMsgServerToClient(partner, sender,
-                        Integer.parseInt(response.getMessage()),
-                        request.getContent(),request.getCreateTime());
+                    sendMsgServerToClient(partner, sender,
+                            Integer.parseInt(response.getMessage()),
+                            request.getContent(), request.getCreateTime());
                 break;
             default:
                 System.out.println(response.getCode() + response.getMessage());
@@ -69,7 +85,7 @@ public class WebSocketHandlerChatSingle extends AbstractWebSocketHandler {
 
     }
 
-    private void sendMsgServerToClient(User partner, User sender, int roomId, String msg,Date createTime) throws IOException {
+    private void sendMsgServerToClient(User partner, User sender, int roomId, String msg, Date createTime) throws IOException {
         DataSingleMessage message = new DataSingleMessage();
         DataSingleFriend dataSender = new DataSingleFriend();
 

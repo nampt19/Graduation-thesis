@@ -40,7 +40,7 @@ public class NotificationService implements INotificationService {
     IDeviceService deviceService;
 
     @Override
-    public BaseResponse setNotify(String token, int type, int partnerId, int roomId,String content) {
+    public BaseResponse setNotify(String token, int type, int partnerId, int roomId, String content) {
         BaseResponse response = new BaseResponse();
         User sender = userRepo.findByAccessToken(token);
         if (sender != null) {
@@ -53,7 +53,7 @@ public class NotificationService implements INotificationService {
                         for (int friendId : mFriendIdList) {
                             saveNotify(type, friendId, sender.getId(), postID);
                         }
-                        deviceService.sendMessage(sender.getId(), mFriendIdList, 1, postID,null);
+                        deviceService.sendMessage(sender.getId(), mFriendIdList, 1, postID, null);
                     }
 
                     break;
@@ -63,7 +63,7 @@ public class NotificationService implements INotificationService {
                         saveNotify(type, partnerId, sender.getId(), sender.getId());
                         List<Integer> receiverIds = new ArrayList<>();
                         receiverIds.add(partnerId);
-                        deviceService.sendMessage(sender.getId(), receiverIds, 2, sender.getId(),null);
+                        deviceService.sendMessage(sender.getId(), receiverIds, 2, sender.getId(), null);
                     }
                     break;
                 case 3: // chat đơn
@@ -72,8 +72,9 @@ public class NotificationService implements INotificationService {
                         if (partners != null) {
                             List<Integer> receiverIds = new ArrayList<>();
                             receiverIds.add(partnerId);
-                            deviceService.sendMessage(sender.getId(), receiverIds, 3, sender.getId(),content);
-                        }
+                            if (!friendService.checkIsBlock(sender.getId(), partnerId)) {
+                                deviceService.sendMessage(sender.getId(), receiverIds, 3, sender.getId(), content);
+                            }}
                     }
                     break;
                 case 4: // chat nhóm
@@ -88,7 +89,7 @@ public class NotificationService implements INotificationService {
                                 }
                             }
 
-                            deviceService.sendMessage(sender.getId(), partnerIds, 4, roomId,content);
+                            deviceService.sendMessage(sender.getId(), partnerIds, 4, roomId, content);
                         }
                     }
                     break;

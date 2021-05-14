@@ -110,7 +110,7 @@ public class FriendService extends BaseService implements IFriendService {
                 }
             } else {
                 if (friendRequestRepo.findByUserIdAndSenderId(requestedUser.getId(), sender.getId()) == null
-                && friendRequestRepo.findByUserIdAndSenderId(sender.getId(),requestedUser.getId()) == null) {
+                        && friendRequestRepo.findByUserIdAndSenderId(sender.getId(), requestedUser.getId()) == null) {
                     FriendRequest friendRequest = new FriendRequest(requestedUser.getId(), sender.getId());
                     friendRequestRepo.save(friendRequest);
                     response.setCode(1000);
@@ -302,20 +302,22 @@ public class FriendService extends BaseService implements IFriendService {
                 if (friend == null) {
                     friend = friendRepo.findByUserAIdAndAndUserBId(requester.getId(), userId);
                 }
+                friend.setUserAId(partner.getId());//người bị chặn
+                friend.setUserBId(requester.getId());//người chặn
                 friend.setBlock(true);
             } else {
                 friend = new Friend();
-                friend.setBlock(true);
-                friend.setUserAId(userId);
+                friend.setUserAId(partner.getId());
                 friend.setUserBId(requester.getId());
+                friend.setBlock(true);
             }
             friendRepo.save(friend);
             List<FriendRequest> requests = new ArrayList<>();
             FriendRequest request1 = friendRequestRepo.findByUserIdAndSenderId(requester.getId(), partner.getId());
             FriendRequest request2 = friendRequestRepo.findByUserIdAndSenderId(partner.getId(), requester.getId());
-            if (request1!=null) requests.add(request1);
-            if (request2!=null) requests.add(request2);
-            if (!requests.isEmpty()){
+            if (request1 != null) requests.add(request1);
+            if (request2 != null) requests.add(request2);
+            if (!requests.isEmpty()) {
                 friendRequestRepo.deleteAll(requests);
             }
             response.setCode(1000);
@@ -373,6 +375,8 @@ public class FriendService extends BaseService implements IFriendService {
                 while (it.hasNext()) {
                     Friend friend = it.next();
                     if (!friend.isBlock()) {
+                        it.remove();
+                    }if (friend.isBlock()&& friend.getUserAId()== user.getId()){
                         it.remove();
                     }
                 }
