@@ -11,6 +11,9 @@ import com.example.nampt.service.ServiceImpl.ChatService;
 import com.example.nampt.service.ServiceImpl.FriendService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -40,13 +43,16 @@ public class WebSocketHandlerChatSingle extends AbstractWebSocketHandler {
     public WebSocketHandlerChatSingle() {
         sessionList = new CopyOnWriteArrayList<>();
 
-        chatService = (ChatService) SpringConfiguration.contextProvider()
-                .getApplicationContext().getBean("chatService");
+        chatService = SpringConfiguration.contextProvider()
+                .getApplicationContext().getBean(ChatService.class);
 
-        userRepo = (UserRepository) SpringConfiguration.contextProvider()
-                .getApplicationContext().getBean("userRepository");
-        friendService = (FriendService) SpringConfiguration.contextProvider()
-                .getApplicationContext().getBean("friendService");
+        userRepo = SpringConfiguration.contextProvider()
+                .getApplicationContext().getBean(UserRepository.class);
+
+        friendService = SpringConfiguration.contextProvider()
+                .getApplicationContext().getBean(FriendService.class);
+
+        System.out.println();
     }
 
     @Override
@@ -74,9 +80,9 @@ public class WebSocketHandlerChatSingle extends AbstractWebSocketHandler {
                 request.getCreateTime());
         switch (response.getCode()) {
             case 1000:
-                    sendMsgServerToClient(partner, sender,
-                            Integer.parseInt(response.getMessage()),
-                            request.getContent(), request.getCreateTime());
+                sendMsgServerToClient(partner, sender,
+                        Integer.parseInt(response.getMessage()),
+                        request.getContent(), request.getCreateTime());
                 break;
             default:
                 System.out.println(response.getCode() + response.getMessage());
