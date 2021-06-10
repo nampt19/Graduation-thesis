@@ -137,7 +137,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(1, builder.build());
 
-        //startForeground(1, builder.build());
+        //  startForeground(1, builder.build());
     }
 
     public Bitmap getBitmapFromUrl(String imageUrl) {

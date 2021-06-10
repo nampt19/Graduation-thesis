@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginCallBacks 
     private void addEvent() {
         if (!DataLocalManager.getMyFirstInstall()) {
             DataLocalManager.setMyFirstInstall(true);
-            Toast toast = Toast.makeText(this, "Chào mừng đến với mạng xã hội !", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "Chào mừng đến với mạng xã hội NTalk", Toast.LENGTH_LONG);
             toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 32);
             toast.show();
         }
